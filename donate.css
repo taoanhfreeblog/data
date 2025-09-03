@@ -1,0 +1,296 @@
+/* RESET RULES 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --lightgray: #efefef;
+  --blue: steelblue;
+  --white: #fff;
+  --black: rgba(0, 0, 0, 0.8);
+  --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
+}
+
+
+
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: inherit;
+}
+
+
+
+.open-modal96 {
+  font-weight: bold;
+  background: #e52a2a;
+  color: var(--white);
+  padding: 0.55rem 0.55rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+
+/* MODAL
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.modal96 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--black);
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.35s ease-in;
+  z-index:5;
+}
+
+.modal96.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal96-dialog {
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  border-radius: 5px;
+  background: var(--white);
+  overflow: auto;
+  cursor: default;
+}
+
+.modal96-dialog > * {
+  padding: 1rem;
+}
+
+.modal96-header,
+.modal96-footer {
+  background: #FF5252;
+}
+
+.modal96-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 18px/1.5 sans-serif;
+
+}
+
+.modal96-header .close-modal96 {
+  font-size: 1.5rem;
+}
+
+.modal96 p + p {
+  margin-top: 1rem;
+}
+
+
+/* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+[data-animation] .modal96-dialog {
+  opacity: 0;
+  transition: all 0.5s var(--bounceEasing);
+}
+
+[data-animation].is-visible .modal96-dialog {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+[data-animation="slideInOutDown"] .modal96-dialog {
+  transform: translateY(100%);
+}
+
+[data-animation="slideInOutTop"] .modal96-dialog {
+  transform: translateY(-100%);
+}
+
+[data-animation="slideInOutLeft"] .modal96-dialog {
+  transform: translateX(-100%);
+}
+
+[data-animation="slideInOutRight"] .modal96-dialog {
+  transform: translateX(100%);
+}
+
+[data-animation="zoomInOut"] .modal96-dialog {
+  transform: scale(0.2);
+}
+
+[data-animation="rotateInOutDown"] .modal96-dialog {
+  transform-origin: top left;
+  transform: rotate(-1turn);
+}
+
+[data-animation="mixInAnimations"].is-visible .modal96-dialog {
+  -webkit-animation: mixInAnimations 2s 0.2s linear forwards;
+          animation: mixInAnimations 2s 0.2s linear forwards;
+}
+
+[data-animation="slideInOutDown"].is-visible .modal96-dialog,
+[data-animation="slideInOutTop"].is-visible .modal96-dialog,
+[data-animation="slideInOutLeft"].is-visible .modal96-dialog,
+[data-animation="slideInOutRight"].is-visible .modal96-dialog,
+[data-animation="zoomInOut"].is-visible .modal96-dialog,
+[data-animation="rotateInOutDown"].is-visible .modal96-dialog {
+  transform: none;
+}
+
+@-webkit-keyframes mixInAnimations {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  10% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: rotate(20deg);
+  }
+
+  30% {
+    transform: rotate(-20deg);
+  }
+
+  40% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(-15deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  70% {
+    transform: rotate(-10deg);
+  }
+
+  80% {
+    transform: rotate(5deg);
+  }
+
+  90% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes mixInAnimations {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  10% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: rotate(20deg);
+  }
+
+  30% {
+    transform: rotate(-20deg);
+  }
+
+  40% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(-15deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  70% {
+    transform: rotate(-10deg);
+  }
+
+  80% {
+    transform: rotate(5deg);
+  }
+
+  90% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.inputcss {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.inputcss input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmarkcss {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #83c3bd;
+  border-radius: 50%;
+}
+
+.inputcss:hover input ~ .checkmarkcss {
+  background-color: #00F328;
+}
+
+
+.inputcss input:checked ~ .checkmarkcss {
+  background-color: #F32000;
+}
+
+
+.checkmarkcss:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+.inputcss input:checked ~ .checkmarkcss:after {
+  display: block;
+}
+
+
+.inputcss .checkmarkcss:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
